@@ -24,7 +24,7 @@ jobs:
         with:
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_TOKEN }}
-          registry: hub.docker.com
+          registry: registry.hub.docker.com
 
       - name: Build and Push Image
         uses: docker/build-push-action@v3
@@ -32,8 +32,8 @@ jobs:
           push: true
           platforms: linux/amd64,linux/arm64
           tags: |
-            elopsod/grpc-echo-server:${{github.ref_name}}
-            elopsod/grpc-echo-server:latest
+            registry.hub.docker.com/elopsod/grpc-echo-server:${{github.ref_name}}
+            registry.hub.docker.com/elopsod/grpc-echo-server:latest
 
 
 
