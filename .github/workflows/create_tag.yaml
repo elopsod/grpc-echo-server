@@ -28,3 +28,4 @@ jobs:
           git --version
           git tag -m "CI bump $FUTURE_LATEST_TAG" "$FUTURE_LATEST_TAG" #https://github.com/orgs/community/discussions/27028#discussioncomment-3254360
           git push origin "$FUTURE_LATEST_TAG"
+
