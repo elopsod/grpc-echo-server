@@ -22,6 +22,7 @@ jobs:
           git config --unset-all http.https://github.com/.extraheader #https://stackoverflow.com/a/69979203
           git config --global user.email "ci_user@git.com"
           git config --global user.name "CI"
+          git tag
           set -x
           export CURRENT_LATEST_TAG=$(git tag | sort --version-sort | tail -n 1)
           export FUTURE_LATEST_TAG=$(echo $CURRENT_LATEST_TAG | awk 'BEGIN{FS=OFS="."} {$2+=1} 1')
