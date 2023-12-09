@@ -1,0 +1,35 @@
+name: ci_tag_build
+
+on:
+  push:
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Lint Helm Chart
+        run: helm lint ./charts/podinfo/
+
+      - name: Chart | Push
+        uses: appany/helm-oci-chart-releaser@v0.3.0
+        with:
+          name: podinfo
+          repository: flux-fleet
+          tag: ${{github.ref_name}}
+          path: ./charts/podinfo/
+          registry: ghcr.io/pmarchenko-coca-cola
+          registry_username: ${{ secrets.REGISTRY_USERNAME }}
+          registry_password: ${{ secrets.REGISTRY_PASSWORD }}
+          update_dependencies: 'true'
+
+
+
+
+
+
