@@ -5,6 +5,6 @@ ADD . .
 RUN pip3 install -r requirements.txt
 
 FROM python:3.10.12-alpine3.18 AS runner
-WORKDIR /grpc
 COPY --from=builder /grpc /grpc
+WORKDIR /grpc
 CMD ["python3", "./server.py"]
