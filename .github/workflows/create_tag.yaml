@@ -22,7 +22,7 @@ jobs:
           bash 1
           set -x
           export GIT_CREDS_FILEPATH="$HOME/.git-credentials"
-          echo "https://elopsod:${GITHUB_CUSTOM_TOKEN}@https://github.com" > "$GIT_CREDS_FILEPATH"
+          echo "https://elopsod:${GITHUB_CUSTOM_TOKEN}@github.com" > "$GIT_CREDS_FILEPATH"
           git config --global credential.helper 'store --file='"$GIT_CREDS_FILEPATH"''
           git config --unset-all http.https://github.com/.extraheader     #https://stackoverflow.com/a/69979203
           git config --global user.email "ci_user@git.com"
