@@ -22,6 +22,7 @@ jobs:
           git config --unset-all http.https://github.com/.extraheader #https://stackoverflow.com/a/69979203
           git config --global user.email "ci_user@git.com"
           git config --global user.name "CI"
+          git fetch --prune --tags
           git tag
           git pull
           set -x
