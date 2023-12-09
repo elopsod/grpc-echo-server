@@ -17,7 +17,6 @@ jobs:
       - name: Bump Version
         shell: bash
         run: |
-          env
           set -x
           export GIT_CREDS_FILEPATH="$HOME/.git-credentials"
           echo "https://${GITHUB_REPOSITORY_OWNER}:${GITHUB_CUSTOM_TOKEN}@https://github.com" > "$GIT_CREDS_FILEPATH"
@@ -30,5 +29,4 @@ jobs:
           export FUTURE_LATEST_TAG=$(echo $CURRENT_LATEST_TAG | awk 'BEGIN{FS=OFS="."} {$2+=1} 1')
           git --version
           git tag -m "CI bump $FUTURE_LATEST_TAG" "$FUTURE_LATEST_TAG" #https://github.com/orgs/community/discussions/27028#discussioncomment-3254360
-          git remote -v
           git push origin "$FUTURE_LATEST_TAG"
