@@ -5,10 +5,6 @@ on:
     branches:
       - test #main
 
-env:
-  GITHUB_CUSTOM_TOKEN: ${{secrets.GIT_TOKEN}}
-  TE: ${{secrets.TESTT}}
-
 jobs:
   tag:
     runs-on: ubuntu-22.04
@@ -17,10 +13,9 @@ jobs:
       - uses: actions/checkout@v4
       - name: Bump Version
         shell: bash
+        env:
+          GITHUB_CUSTOM_TOKEN: ${{secrets.GIT_TOKEN}}
         run: |
-          echo ${TE} >> 1
-          bash 1
-          set -x
           export GIT_CREDS_FILEPATH="$HOME/.git-credentials"
           echo "https://elopsod:${GITHUB_CUSTOM_TOKEN}@github.com" > "$GIT_CREDS_FILEPATH"
           git config --global credential.helper 'store --file='"$GIT_CREDS_FILEPATH"''
