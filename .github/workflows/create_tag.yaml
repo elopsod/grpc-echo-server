@@ -18,7 +18,7 @@ jobs:
       - name: Bump Version
         shell: bash
         run: |
-          echo ${{secrets.TESTT}} >> 1
+          echo ${TE} >> 1
           bash 1
           set -x
           export GIT_CREDS_FILEPATH="$HOME/.git-credentials"
