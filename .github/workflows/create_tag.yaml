@@ -15,9 +15,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{secrets.GIT_TOKEN}}
         run: |
-          env
-          # set -x
-          REPO_URL_AUTH_URL=
+          set -x
           export GIT_CREDS_FILEPATH="$HOME/.git-credentials"
           echo "https://ci:${GITHUB_TOKEN}@https://github.com" > "$GIT_CREDS_FILEPATH"
           git config --global credential.helper 'store --file='"$GIT_CREDS_FILEPATH"''
