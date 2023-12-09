@@ -30,7 +30,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm64/v8
           tags: |
             registry.hub.docker.com/elopsod/grpc-echo-server:${{github.ref_name}}
             registry.hub.docker.com/elopsod/grpc-echo-server:latest
