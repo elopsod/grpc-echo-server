@@ -24,7 +24,7 @@ jobs:
         with:
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_TOKEN }}
-          registry: quay.io
+          registry: registry.hub.docker.com
 
       - name: Build and Push Image
         uses: docker/build-push-action@v3
