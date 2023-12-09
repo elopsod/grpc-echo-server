@@ -3,7 +3,7 @@ name: create_tag
 on:
   push:
     branches:
-      - test #main
+      - main
 
 jobs:
   tag:
