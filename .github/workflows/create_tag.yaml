@@ -6,7 +6,7 @@ on:
       - test #main
 
 env:
-  GITHUB_CUSTOM_TOKEN: ${{secrets.GIT_TOKEN}}
+  GITHUB_CUSTOM_TOKEN: "dd" #${{secrets.GIT_TOKEN}}
 
 jobs:
   tag:
