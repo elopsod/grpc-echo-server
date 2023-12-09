@@ -28,4 +28,5 @@ jobs:
           export CURRENT_LATEST_TAG=$(git tag | sort --version-sort | tail -n 1)
           export FUTURE_LATEST_TAG=$(echo $CURRENT_LATEST_TAG | awk 'BEGIN{FS=OFS="."} {$2+=1} 1')
           git tag -m "CI bump $FUTURE_LATEST_TAG" "$FUTURE_LATEST_TAG" #https://github.com/orgs/community/discussions/27028#discussioncomment-3254360
+          git remote -v
           git push origin "$FUTURE_LATEST_TAG"
