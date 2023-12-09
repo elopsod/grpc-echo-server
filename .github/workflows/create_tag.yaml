@@ -19,14 +19,11 @@ jobs:
           export GIT_CREDS_FILEPATH="$HOME/.git-credentials"
           echo "https://ci:${GITHUB_CUSTOM_TOKEN}@https://github.com" > "$GIT_CREDS_FILEPATH"
           git config --global credential.helper 'store --file='"$GIT_CREDS_FILEPATH"''
-          git config --unset-all http.https://github.com/.extraheader #https://stackoverflow.com/a/69979203
+          git config --unset-all http.https://github.com/.extraheader   #https://stackoverflow.com/a/69979203
           git config --global user.email "ci_user@git.com"
           git config --global user.name "CI"
           git fetch --prune --tags
-          git tag
-          git pull
-          set -x
           export CURRENT_LATEST_TAG=$(git tag | sort --version-sort | tail -n 1)
           export FUTURE_LATEST_TAG=$(echo $CURRENT_LATEST_TAG | awk 'BEGIN{FS=OFS="."} {$2+=1} 1')
-          # git tag -a -m "Version $tag" "$tag"
-          # git push origin "$tag"
+          git tag -a -m "Version $tag" "$tag"                           #https://github.com/orgs/community/discussions/27028#discussioncomment-3254360
+          git push origin "$tag"
